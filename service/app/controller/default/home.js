@@ -18,8 +18,7 @@ class HomeController extends Controller{
                   'article.view_count as view_count ,'+
                   'type.typeName as typeName '+
                   'FROM article LEFT JOIN type ON article.type_id = type.Id'
-                 
-     
+            //异步查询
          const results = await this.app.mysql.query(sql)
      
          this.ctx.body={

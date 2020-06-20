@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Head from 'next/head'
 import {Row, Col , Icon ,Breadcrumb,Affix  } from 'antd'
-
+//子组件
 import Header from '../components/Header'
 import Author from '../components/Author'
 import Advert from '../components/Advert'
