@@ -19,7 +19,7 @@ class MainController extends Controller{
     const res = await this.app.mysql.query(sql)
     if(res.length>0){
         //登录成功,进行session缓存
-        let openId=new Date().getTime()
+        let openId=new Date().getTime()  
         this.ctx.session.openId={ 'openId':openId }
         this.ctx.body={'data':'登录成功','openId':openId}
 
@@ -27,13 +27,15 @@ class MainController extends Controller{
         this.ctx.body={data:'登录失败'}
     } 
   }
+
+  //获取类别信息
   async getTypeInfo(){
       const resType=await this.app.mysql.select('type')
       this.ctx.body={data:resType}
   }
     //添加文章
     async addArticle(){
-  
+    console.log('------------------')
       let tmpArticle= this.ctx.request.body
     // tmpArticle.
     const result = await this.app.mysql.insert('article',tmpArticle)
@@ -82,6 +84,18 @@ class MainController extends Controller{
        const result=await this.app.mysql.query(sql)
        this.ctx.body={data:result}
     }
+      //修改文章
+  async updateArticle(){
+    let tmpArticle= this.ctx.request.body
+
+    const result = await this.app.mysql.update('article', tmpArticle);
+    const updateSuccess = result.affectedRows === 1;
+    console.log(updateSuccess)
+    this.ctx.body={
+        isScuccess:updateSuccess
+    }
+  }
+    
 }
 
 module.exports=MainController

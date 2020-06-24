@@ -104,7 +104,8 @@ function AddArticle(props){
          let datetext= showDate.replace('-','/') //把字符串转换成时间戳
         dataProps.addTime =(new Date(datetext).getTime())/1000
         // message.success(articleId)
-        
+        console.log(dataProps)
+        console.log('--------------------')
         if(articleId==0){
         console.log('articleId=:'+articleId)
         dataProps.view_count =Math.ceil(Math.random()*100)+1000
@@ -125,8 +126,7 @@ function AddArticle(props){
             }
         )
     }
-    else{
-    
+    else{  
         dataProps.id = articleId 
         axios({
             method:'post',
@@ -173,26 +173,7 @@ function AddArticle(props){
             }
         )
     }
-    // const getArticleById = (id)=>{
-    //     axios(servicePath.getArticleById+id,{ 
-    //         withCredentials: true,
-    //         header:{ 'Access-Control-Allow-Origin':'*' }
-    //     }).then(
-    //         res=>{
-    //             //let articleInfo= res.data.data[0]
-    //             setArticleTitle(res.data.data[0].title)
-    //             setArticleContent(res.data.data[0].article_content)
-    //             let html=marked(res.data.data[0].article_content)
-    //             setMarkdownContent(html)
-    //             setIntroducemd(res.data.data[0].introduce)
-    //             let tmpInt = marked(res.data.data[0].introduce)
-    //             setIntroducehtml(tmpInt)
-    //             setShowDate(res.data.data[0].addTime)
-    //             setSelectType(res.data.data[0].typeId)
-    
-    //         }
-    //     )
-    // }
+   
     
     
 

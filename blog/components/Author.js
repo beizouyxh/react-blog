@@ -8,7 +8,7 @@ const Author =()=>{
         <div className="author-div comm-box">
             <div> <Avatar size={100} src="http://pic.qqtn.com/up/2017-1/2017012718393730130.jpg"  /></div>
             <div className="author-introduction">
-                  大三前端菜鸟
+                  大三前端菜鸟   热爱生活  热爱编程 头发茂盛
                 {/* 分隔线组件 */}
                 <Divider>社交账号</Divider>    
                 <Avatar size={28} icon="github" className="account"  />
