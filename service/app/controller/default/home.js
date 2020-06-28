@@ -10,11 +10,10 @@ class HomeController extends Controller{
 
     //获取文章列表
     async getArticleList(){
-
         let sql = 'SELECT article.id as id,'+
                   'article.title as title,'+
                   'article.introduce as introduce,'+
-                  "article.addTime as addTime,"+
+                  "FROM_UNIXTIME(article.addTime,'%Y-%m-%d %H:%i:%s' ) as addTime,"+
                   'article.view_count as view_count ,'+
                   'type.typeName as typeName '+
                   'FROM article LEFT JOIN type ON article.type_id = type.Id'
@@ -25,8 +24,8 @@ class HomeController extends Controller{
              data:results
          }
      }
-     //根据类别ID
 
+     //根据类别ID
      async getArticleById(){
         //先配置路由的动态传值，然后再接收值
         let id = this.ctx.params.id

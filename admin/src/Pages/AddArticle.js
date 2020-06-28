@@ -5,6 +5,7 @@ import { Row ,Input, Button, Col,Select,DatePicker, message} from 'antd'
 import axios from 'axios'
 import servicePath from '../config/apiUrl'
 
+//在Select、Input 组件中引入Option、TextArea
 const { Option } = Select
 const { TextArea } = Input
 

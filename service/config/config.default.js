@@ -22,6 +22,7 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
+  //配置数据库地址、接口、用户、密码、数据库名称
   config.mysql = {
     // database configuration
     client: {
@@ -42,17 +43,18 @@ module.exports = appInfo => {
     agent: false,
   };
   
+  //设置跨域
   config.security={
     csrf:{
-      enable:false
+      enable:false  
     },
-    domainWhiteList:['*']
+    domainWhiteList:['*']   //所有数组
   };
 
   config.cors={
-    // origin: 'http://localhost:3000',
+    // origin: '*',    //所有的域名都可以访问
     credentials: true,  //允许Cook可以跨域
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'     //允许哪些请求方式可以访问
   }
   return {
     ...config,

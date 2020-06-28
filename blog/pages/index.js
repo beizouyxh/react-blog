@@ -53,9 +53,12 @@ const Home = (list) => {
                 <List.Item>
                   {/* 博客标题 */}
                   <div className="list-title">
+
+                    {/* 跳转到文章详情页面  */}
                     <Link href={{pathname:'/detailed',query:{id:item.id}}}>
                        <a>{item.title}</a>
                     </Link>
+                    
                   </div>
                    {/* 图标  日期，类别 ，数量 */}
                   <div className="list-icon">
@@ -82,7 +85,7 @@ const Home = (list) => {
    </div>
  )
 }
-
+//获取文章列表
 Home.getInitialProps= async()=>{
   const promise=new Promise((resolve)=>{
     axios(servicePath.getArticleList).then(

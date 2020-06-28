@@ -68,15 +68,17 @@ function AdminIndex(props){
           <Breadcrumb.Item>后台管理</Breadcrumb.Item>
           <Breadcrumb.Item>工作台</Breadcrumb.Item>
         </Breadcrumb>
+
         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+          {/* 路由设置 */}
             <div>
               <Route path="/index/" exact  component={AddArticle} />
               <Route path="/index/add" exact  component={AddArticle} />
               <Route path="/index/list" exact  component={ArticleList} />
               <Route path="/index/add/:id" exact  component={AddArticle} />
-            </div>
-            
+            </div>    
         </div>
+
       </Content>
       <Footer style={{ textAlign: 'center' }}>JSPang.com</Footer>
     </Layout>

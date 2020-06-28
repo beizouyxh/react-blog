@@ -9,6 +9,7 @@ import Footer from '../components/Footer'
 
 import '../public/style/pages/detailed.css'
 
+//解析marked  和 高亮
 import marked from 'marked'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai-sublime.css';
@@ -23,27 +24,31 @@ import axios from 'axios'
 import  servicePath  from '../config/apiUrl'
 
 const Detailed = (props) => {
+
+  //使用marked必须引入Renderer
   const renderer=new marked.Renderer()
+
   const tocify = new Tocify()
   renderer.heading = function(text, level, raw) {
       const anchor = tocify.add(text, level);
       return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`;
     };
-
-
-
+    
+    //设置属性
   marked.setOptions({
     renderer:renderer,
-    gfm:true,
-    pedantic:false,
-    sanitize: false,
-    tables:true,
-    breaks:false,
-    smartLists:true,
+    gfm:true,   
+    pedantic:false,  //容错
+    sanitize: false,  //不忽略html
+    tables:true,       //允许表格
+    breaks:false,     //换行符
+    smartLists:true,    //自动渲染
+    //如何让代码高亮
     highlight: function (code) {
       return hljs.highlightAuto(code).value;
     }
   })
+  //转化为html
   let html=marked(props.article_content)
 
   return(
@@ -108,7 +113,7 @@ const Detailed = (props) => {
 
 Detailed.getInitialProps = async(context)=>{
 
-  console.log(context.query.id)
+  //console.log(context.query.id)
   let id =context.query.id
   const promise = new Promise((resolve)=>{
 
@@ -119,7 +124,7 @@ Detailed.getInitialProps = async(context)=>{
       }
     )
   })
-
+   //必须要返回
   return await promise
 }
 

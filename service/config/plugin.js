@@ -9,10 +9,10 @@
 // };
 
 exports.mysql={
-   enable:true,
-   package:'egg-mysql'
+   enable:true,    //是否开启
+   package:'egg-mysql'    //对应的包
 }
 exports.cors={
-  enable:true,
+  enable:true,      //允许跨域
   package:'egg-cors'   //解决跨域访问
 }
